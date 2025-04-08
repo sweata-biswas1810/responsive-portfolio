@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 
 let menuIcon = document.querySelector('#menu-icon');
@@ -7,74 +6,59 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
+    let top = window.scrollY;
+
     sections.forEach(sec => {
-        let top = window.scrollY;
         let offset = sec.offsetTop - 150;
         let height = sec.offsetHeight;
         let id = sec.getAttribute('id');
 
         if (top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.queryselector('header nav a[href*=' + id + ' ]').classList.add('active')
+            navLinks.forEach(link => {
+                link.classList.remove('active');
             });
 
-           
+            let activeLink = document.querySelector('header nav a[href*="' + id + '"]');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
         }
-        
-    })
-}
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+    });
+};
 
+if (menuIcon && navbar) {
+    menuIcon.onclick = () => {
+        menuIcon.classList.toggle('bx-x');
+        navbar.classList.toggle('active');
+    };
 }
-document.getElementById("myButton").addEventListener("click", function() {
-    document.getElementById("mySection").scrollIntoView({ behavior: "smooth" });
-  });
-  document.getElementById("btn").addEventListener("click", function() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-  });
-  
-  function toggleMobileMenu() {
+
+// Smooth scroll for "myButton"
+let myButton = document.getElementById("myButton");
+if (myButton) {
+    myButton.addEventListener("click", () => {
+        let mySection = document.getElementById("mySection");
+        if (mySection) {
+            mySection.scrollIntoView({ behavior: "smooth" });
+        }
+    });
+}
+
+// Smooth scroll for "btn"
+let contactButton = document.getElementById("btn");
+if (contactButton) {
+    contactButton.addEventListener("click", () => {
+        let contactSection = document.getElementById("contact");
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: "smooth" });
+        }
+    });
+}
+
+// Toggle mobile menu
+function toggleMobileMenu() {
     const mobileNav = document.querySelector('.mobile-nav');
-    mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+    if (mobileNav) {
+        mobileNav.style.display = (mobileNav.style.display === 'flex') ? 'none' : 'flex';
+    }
 }
-=======
-
-
-let menuIcon = document.querySelector('#menu-icon');
-let navbar = document.querySelector('.navbar');
-let sections = document.querySelectorAll('section');
-let navLinks = document.querySelectorAll('header nav a');
-
-window.onscroll = () => {
-    sections.forEach(sec => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
-
-        if (top >= offset && top < offset + height) {
-            navLinks.forEach(links => {
-                links.classList.remove('active');
-                document.queryselector('header nav a[href*=' + id + ' ]').classList.add('active')
-            });
-
-           
-        }
-        
-    })
-}
-menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
-
-}
-document.getElementById("myButton").addEventListener("click", function() {
-    document.getElementById("mySection").scrollIntoView({ behavior: "smooth" });
-  });
-  document.getElementById("btn").addEventListener("click", function() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-  });
->>>>>>> b8562ebfa4030e6ae0a4f1e814f5322456d85d05
